@@ -30,7 +30,7 @@ import { createContext, useReducer } from "react";
     if(action.type==='remove'){
         //remove an item from the state
         const existingCartItemIndex = state.items.findIndex((item)=>
-        item.id===action.item.id
+        item.id===action.id
 
     )
     const existingCartItem = state.items[existingCartItemIndex];
