@@ -4,6 +4,7 @@ import { createContext, useReducer } from "react";
     items:[],
     addItem:(item)=>{},
     removeItem:(id)=>{},
+    clearCart:()=>{}
    });
    function cartReducer(state,action){
     if(action.type==='add'){
@@ -48,6 +49,10 @@ import { createContext, useReducer } from "react";
     }
     return{...state,items:updatedItems}
     }
+    //to clear cart after submit 
+    if(action.type==='clearCart'){
+        return {...state,items:[]}
+    }
     return state;
 
 
@@ -62,10 +67,14 @@ import { createContext, useReducer } from "react";
     dispatchCartAction({type:'remove',id:id})
 
    }
+   function clearCart(){
+    dispatchCartAction({type:'clearCart'})
+   }
    const cartContext = {
     items:cart.items,
     addItem,
-    removeItem
+    removeItem,
+    clearCart
 
    }
    console.log(cartContext)
